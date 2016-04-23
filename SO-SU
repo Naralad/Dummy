@@ -1,0 +1,46 @@
+// 소수찾기
+#include <stdio.h>
+#include <conio.h>
+
+int findPrime(int, int);
+
+void main()
+{
+	printf("이 함수는 당신이 입력한 2이상의 자연수 n에 대해서\nn 이상의 \'최소\'인 소수를 찾는 함수입니다.\n원하는 n을 입력하세요\n\n");
+	int usrNumb;
+	scanf("%d",&usrNumb);
+	int prime = findPrime(usrNumb, 2);
+	if (usrNumb == prime)
+	{
+	printf("\n당신이 원하시는 \n%d이상의 최소의 소수는...\n%d입니다\n\n%d은(는) 소수입니다",usrNumb,prime,usrNumb);
+	}
+	else
+	{
+	printf("\n당신이 원하시는 \n%d이상의 최소의 소수는...\n%d입니다\n\n%d은(는) 소수가 아닙니다",usrNumb,prime,usrNumb);
+	}
+	getch();
+}
+
+int findPrime(int num, int devisor)
+{
+	int Remain = num % devisor;
+
+	if (Remain == 0)
+	{
+		num += 1;
+		devisor = 2;
+		return findPrime(num,devisor);
+	}
+	else
+	{
+		if (devisor != num-1)
+		{
+			devisor += 1;
+			return findPrime(num,devisor);
+		}
+		else
+		{
+			return num;
+		}
+	}
+}
